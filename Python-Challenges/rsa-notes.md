@@ -55,6 +55,7 @@ m(c) = c pow 413 mod 3233
 To Encrypt Message m
 m=65
 c = 65 pow 17 mod 3233 = 2790
+
 To Decrypt Message m
 c = 2790
 m = 2790 pow 413 mod 3233 = 65
@@ -62,15 +63,28 @@ m = 2790 pow 413 mod 3233 = 65
 Calculate dp, dq and q inverse
 dp = d mod (p-1) = 413 mod(61-1) = 53
 dq = d mod (q-1) = 413 mod(53-1) = 49
-qinv = q pow -1 mod p = 53 pow -1 mod 61 = 38
-(qinv x q) mod p = 38 x 53 mod 61 = 1
+q-inv = q pow -1 mod p = 53 pow -1 mod 61 = 38
+(q-inv x q) mod p = 38 x 53 mod 61 = 1
 
 
 m1 = c dp mod p = 2790 pow 53 mod 61 = 4
 m2 = c dq mod q = 2790 pow 49 mod 53 = 12
-h = (qinv x (m1 x m2)) mod p = (38 x 8) mod 61 = 1
+h = (q-inv x (m1 x m2)) mod p = (38 x 8) mod 61 = 1
 m = m2 + h x q = 12 + 1 x 53 = 65
 
 
+phi(n)=(p-1)*(q-1)
+phi(3233)=(61-1)*(53-1)=60*52=3120
+
+m = c pow d mod n
+
+phi = (p - 1)*(q - 1)
+d = modinv(e,phi(n))
+
+Encrypt
+m = m pow e mod n  =  pow(m,e,n)
+
+Decrypt
+e x d mod phi(n) = 1
 
 

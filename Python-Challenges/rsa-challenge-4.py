@@ -42,7 +42,13 @@ private_key = RSA.importKey(key)
 print(int2string(pow(cipher_text,private_key.d,private_key.n)))
 
 
+'''
+import the private key
+using RSA object created, can now access the necessary parts of the key, i.e d and n
+using pow(ciphertext, private_key.d, private_key.n) to decrypr the message
+int to string will convert the message to ascii value
 
+'''
 
 
 
